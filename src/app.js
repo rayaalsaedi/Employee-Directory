@@ -1,8 +1,14 @@
 import React from "react";
-import Alert from "./components/Alert";
+import EmployeeMain from "./components/EmployeeMain";
+import Header from "./components/Header"
 
-function App() {
-  return <Alert type="danger">Invalid user id or password</Alert>;
-}
-
-export default App;
+  function App() {
+    return (
+      <div>
+      <Header/>
+        <EmployeeMain />
+      </div>
+    );
+  }
+  
+  export default App;
