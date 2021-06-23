@@ -6,7 +6,7 @@ const Header = () => {
         <header>
             <h1 className="text-center">Employee Directory</h1>
             <p className='text-center'>
-                Search by name or click on the columns to filter by name. 
+                Search by name or click on the columns to filter. 
             </p>
         </header>
     );

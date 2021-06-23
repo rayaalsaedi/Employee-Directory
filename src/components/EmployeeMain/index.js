@@ -12,17 +12,15 @@ class EmployeeMain extends Component {
     sortDir: this.sortDirectory,
   };
 
-  // SORTING EACH COLUMN 
   get sortDirectory() {
     return {
       name: "",
       email:"",
       phone: "",
-      dob: "",
+      dob:""
     };
   }
 
-  // When this component mounts, call the api 'https://randomuser.me/api/?results=150'
   componentDidMount() {
     API.searchEmployees()
       .then((res) =>
@@ -34,19 +32,16 @@ class EmployeeMain extends Component {
       .catch((err) => console.log(err));
   }
 
-  // When the form is submitted, search the  API for the value of `this.state.search`
   handleFormSubmit = (event) => {
     event.preventDefault();
   };
 
-  // UPDATE THE SEARCH VALUE IN STATE TO FILTER BY EMPLOYEE NAME
   handleInputChange = (event) => {
     const value = event.target.value;
     this.setState({ search: value });
     this.filterEmployeesData(value.toLowerCase().trim());
   };
 
-  // A FX THAT RETURNS A NEW ARRAY WITH FILTER METHOD AND UPDATES STATE
   filterEmployeesData = (data) => {
     if (data) {
       this.setState({
@@ -68,7 +63,6 @@ class EmployeeMain extends Component {
     }
   };
 
-  // SORTING ENGINE--using a key of specific object
   sortBy = (key, primary = 0, secondary = 0) => {
     let sortedStaff = this.state.filteredEmployees;
     if (this.state.sortDir[key]) {
@@ -84,8 +78,6 @@ class EmployeeMain extends Component {
         a = a[key];
         b = b[key];
 
-        // if secondary and primary are ===,
-        // and with sorting by last name and they are the same, then sort by first name instead
 
         if (primary) {
           if (secondary && a[primary] === b[primary]) {
@@ -104,7 +96,6 @@ class EmployeeMain extends Component {
     }
   };
 
-  // FORMATS DATE AND CALLED AS PROPS IN EmployeeTable
   formatDate = (date) => {
     date = new Date(date);
     let dob = [];
@@ -112,8 +103,7 @@ class EmployeeMain extends Component {
     dob.push(("0" + date.getDate()).slice(-2));
     dob.push(date.getFullYear());
 
-    // Join the formatted date with dash delimeter
-    return dob.join("-");
+    return dob.join("/");
   };
 
   render() {
