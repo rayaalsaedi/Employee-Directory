@@ -17,7 +17,6 @@ class EmployeeMain extends Component {
       name: "",
       email:"",
       phone: "",
-      dob:""
     };
   }
 
@@ -53,8 +52,7 @@ class EmployeeMain extends Component {
               .includes(data) ||
             employee.phone.includes(data) ||
             employee.phone.replace(/[^\w\s]/gi, "").includes(data) ||
-            employee.email.includes(data) ||
-            this.formatDate(employee.dob.date).includes(data)
+            employee.email.includes(data) 
           );
         }),
       });
@@ -96,15 +94,7 @@ class EmployeeMain extends Component {
     }
   };
 
-  formatDate = (date) => {
-    date = new Date(date);
-    let dob = [];
-    dob.push(("0" + (date.getMonth() + 1)).slice(-2));
-    dob.push(("0" + date.getDate()).slice(-2));
-    dob.push(date.getFullYear());
-
-    return dob.join("/");
-  };
+  
 
   render() {
     return (
@@ -119,7 +109,6 @@ class EmployeeMain extends Component {
             state={this.state}
             sortBy={this.sortBy}
             filteredEmployees={this.filterEmployeesData}
-            formatDate={this.formatDate}
           />
         </div>
       </>
