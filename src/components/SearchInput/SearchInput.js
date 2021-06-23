@@ -3,7 +3,7 @@ import React from "react";
 const SearchInput = (props) => {
 
     return(
-        <nav className="navbar navbar-danger bg-danger justify-content-center">
+        <nav className="navbar navbar-light bg justify-content-center">
             <form className = "form-inline m-2" onSubmit={props.handleFormSubmit}>
                 <input
                 className ="form-control"
